@@ -39,9 +39,8 @@ export class Err {
 }
 
 export interface Result<T> {
-  ok: boolean;
   val: T;
-  err: Err;
+  err: Err | null;
 }
 
 export function result<T>(ok: true, val: T): Result<T>;
@@ -70,8 +69,8 @@ export function result<T>(ok: boolean, ...args: [T] | (Err | string)[]): Result<
       }
     }
 
-    return { ok: false, val: null as T, err: err! };
+    return { val: null as T, err: err! };
   }
 
-  return { ok: true, val: args[0] as T, err: new Err("") };
+  return { val: args[0] as T, err: null };
 }

@@ -30,14 +30,16 @@ Deno.test("Result", () => {
     return result(true, a + b);
   }
   {
-    const { ok, val } = fibonacci(3);
-    assertEquals(ok, true);
-    assertEquals(val, 2);
+    const num = fibonacci(3);
+    assertEquals(num.err, null);
+    assertEquals(num.val, 2);
   }
   {
-    const { err, ok, val } = fibonacci(-1);
-    assertEquals(ok, false);
-    assertEquals(err.is(ErrInvalid), true);
-    assertEquals(val, null);
+    const num = fibonacci(-1);
+    if (num.err === null) {
+      throw 'expected error'
+    }
+    assertEquals(num.err.is(ErrInvalid), true);
+    assertEquals(num.val, null);
   }
 });

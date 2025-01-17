@@ -56,7 +56,7 @@ const res3 = result(false, "user doesn't exist", ErrNotFound);
 Sample usage is as follows.
 
 ```TypeScript
-import { Err, type Result, result } from "ts-result";
+import { Err, type Result, result } from "./result.ts";
 
 const ErrNotFound = new Err("not found");
 
@@ -77,7 +77,7 @@ async function fetchUserData(): Promise<Result<User>> {
 
 async function main() {
   const user = await fetchUserData();
-  if (!user.ok) {
+  if (user.err !== null) {
     if (user.err.is(ErrNotFound)) {
       console.log("invalid user input");
       return;
