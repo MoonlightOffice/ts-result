@@ -56,7 +56,7 @@ const res3 = result(false, "user doesn't exist", ErrNotFound);
 Sample usage is as follows.
 
 ```TypeScript
-import { Err, type Result, result } from "./result.ts";
+import { Err, type Result, result } from "ts-result";
 
 const ErrNotFound = new Err("not found");
 
