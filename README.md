@@ -10,7 +10,7 @@ Add this to the import map in deno.json:
 ```json
 {
   "imports": {
-    "ts-result": "https://raw.githubusercontent.com/MoonlightOffice/ts-result/v0.0.1/result.ts"
+    "ts-result": "https://raw.githubusercontent.com/MoonlightOffice/ts-result/v0.1.0/result.ts"
   }
 }
 ```
