@@ -30,7 +30,10 @@ console.log(Err2.toString());
 Return values and errors. Use result() when returning a Result value.
 
 ```TypeScript
-import { Err, result } from "https://raw.githubusercontent.com/MoonlightOffice/ts-result/main/index.ts";
+import {
+  Err,
+  result,
+} from "https://raw.githubusercontent.com/MoonlightOffice/ts-result/main/index.ts";
 
 const ErrNotFound = new Err("not found");
 
@@ -42,7 +45,11 @@ const res3 = result(false, "user doesn't exist", ErrNotFound);
 Sample usage is as follows.
 
 ```TypeScript
-import { Err, type Result, result } from "https://raw.githubusercontent.com/MoonlightOffice/ts-result/main/index.ts";
+import {
+  Err,
+  type Result,
+  result,
+} from "https://raw.githubusercontent.com/MoonlightOffice/ts-result/main/index.ts";
 
 const ErrNotFound = new Err("not found");
 

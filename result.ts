@@ -40,11 +40,11 @@ export class Err {
 
 export interface Result<T> {
   ok: boolean;
-  value: T;
+  val: T;
   err: Err;
 }
 
-export function result<T>(ok: true, value: T): Result<T>;
+export function result<T>(ok: true, val: T): Result<T>;
 export function result<T>(ok: false, ...errs: (Err | string)[]): Result<T>;
 export function result<T>(ok: boolean, ...args: [T] | (Err | string)[]): Result<T> {
   if (!ok) {
@@ -70,8 +70,8 @@ export function result<T>(ok: boolean, ...args: [T] | (Err | string)[]): Result<
       }
     }
 
-    return { ok: false, value: null as T, err: err! };
+    return { ok: false, val: null as T, err: err! };
   }
 
-  return { ok: true, value: args[0] as T, err: new Err("") };
+  return { ok: true, val: args[0] as T, err: new Err("") };
 }

@@ -24,20 +24,20 @@ Deno.test("Result", () => {
       return result(true, k);
     }
 
-    const { value: a } = fibonacci(k - 1);
-    const { value: b } = fibonacci(k - 2);
+    const { val: a } = fibonacci(k - 1);
+    const { val: b } = fibonacci(k - 2);
 
     return result(true, a + b);
   }
   {
-    const { ok, value } = fibonacci(3);
+    const { ok, val } = fibonacci(3);
     assertEquals(ok, true);
-    assertEquals(value, 2);
+    assertEquals(val, 2);
   }
   {
-    const { err, ok, value } = fibonacci(-1);
+    const { err, ok, val } = fibonacci(-1);
     assertEquals(ok, false);
     assertEquals(err.is(ErrInvalid), true);
-    assertEquals(value, null);
+    assertEquals(val, null);
   }
 });
