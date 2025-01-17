@@ -1,14 +1,28 @@
-# Usage
+# Overview
 
 Handle errors as return values instead of using try-catch block. Golang-like error handling, in
 TypeScript.
+
+# Install
+
+Add this to the import map in deno.json:
+
+```json
+{
+  "imports": {
+    "ts-result": "https://raw.githubusercontent.com/MoonlightOffice/ts-result/main/index.ts"
+  }
+}
+```
+
+# Usage
 
 ## Err
 
 Define your custom error types.
 
 ```TypeScript
-import { Err } from "https://raw.githubusercontent.com/MoonlightOffice/ts-result/main/index.ts";
+import { Err } from "ts-result";
 
 const Err1 = new Err("error 1");
 const Err2 = new Err("error 2").add(Err1);
@@ -30,10 +44,7 @@ console.log(Err2.toString());
 Return values and errors. Use result() when returning a Result value.
 
 ```TypeScript
-import {
-  Err,
-  result,
-} from "https://raw.githubusercontent.com/MoonlightOffice/ts-result/main/index.ts";
+import { Err, result } from "ts-result";
 
 const ErrNotFound = new Err("not found");
 
@@ -45,11 +56,7 @@ const res3 = result(false, "user doesn't exist", ErrNotFound);
 Sample usage is as follows.
 
 ```TypeScript
-import {
-  Err,
-  type Result,
-  result,
-} from "https://raw.githubusercontent.com/MoonlightOffice/ts-result/main/index.ts";
+import { Err, type Result, result } from "ts-result";
 
 const ErrNotFound = new Err("not found");
 
@@ -69,18 +76,18 @@ async function fetchUserData(): Promise<Result<User>> {
 }
 
 async function main() {
-  const { err, ok, value } = await fetchUserData();
-  if (!ok) {
-    if (err.is(ErrNotFound)) {
+  const user = await fetchUserData();
+  if (!user.ok) {
+    if (user.err.is(ErrNotFound)) {
       console.log("invalid user input");
       return;
     }
 
-    console.error("unexpected error had occurred:", err.toString());
+    console.error("unexpected error had occurred:", user.err.toString());
     return;
   }
 
-  console.log(`User id: ${value.id}, User name: ${value.name}`);
+  console.log(`User id: ${user.val.id}, User name: ${user.val.name}`);
 }
 
 if (import.meta.main) {
