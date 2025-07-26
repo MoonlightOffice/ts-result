@@ -1,6 +1,6 @@
 # Overview
 
-Update, July 2025: This repo and tool are no longer maintained. Please see MoonlightOffice/ts-util for a maintained fork instead.
+Update, July 2025: This repo and tool are no longer maintained. Please see [ts-util](https://github.com/MoonlightOffice/ts-util) for a maintained fork instead.
 
 Handle errors as return values instead of using try-catch block. Golang-like error handling, in
 TypeScript.
